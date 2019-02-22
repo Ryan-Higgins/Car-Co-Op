@@ -12,9 +12,10 @@ public class SwitchManager : MonoBehaviour
 
     public GameObject ship;
     private Rigidbody shipRB;
-
+    public static bool left, right; 
     private int brakingForce = 4;
-    private int speed = 10;
+    public float speed = 3f, maxSpeed = 40f, rotationSpeed = 45f;
+    float drageForce = 0.9f; 
     
     // Start is called before the first frame update
     void Start()
@@ -25,33 +26,62 @@ public class SwitchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+         
         if (isGoing)
         {
-            print("I'm driving");
-            shipRB.AddForce(Vector3.right * speed);
+            // print("I'm driving");
+            //ship.transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
+
+            if (shipRB.velocity.magnitude < maxSpeed)
+            {
+                shipRB.AddForce(direction * speed);
+            }
+        }else{
+           // shipRB.velocity = (shipRB.velocity *  drageForce);
+
         }
         
         if (isStopping)
         {
-            print("I'm Stopping");
+            //print("I'm Stopping");
             shipRB.drag = brakingForce;
         }
 
         if (!isStopping)
         {
-            shipRB.drag = 1;
+            //shipRB.drag = 1;
         }
 
         if (doubleSpeed)
         {
-            print("SO FAST");
-            speed = 20;
-        }else if(doubleStop)
+            //print("SO FAST");
+            //speed = 20;
+            Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
+            if (shipRB.velocity.magnitude < maxSpeed)
+            {
+                shipRB.AddForce(direction * speed);
+            }
+        }
+        else if(doubleStop)
         {
-            print("SO SLOW");
+            //print("SO SLOW");
             brakingForce = 8;
         }
-        
-    }
+        if (left)
+        {
+            ship.transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime); 
+
+
+        }
+
+        if(right){
+
+            ship.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        } 
+
+
+        }
 
 }
