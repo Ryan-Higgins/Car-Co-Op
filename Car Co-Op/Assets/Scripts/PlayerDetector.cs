@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,17 +10,89 @@ public class PlayerDetector : MonoBehaviour
     public int playerCount = 0;
     public GameObject meDisplay;
      Text text;
+    private int caseSwitch;
     
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponentInChildren<Text>();
         text.text = "";
+
+        caseSwitch = Random.Range(0, 5);
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        switch (caseSwitch)
+        {
+            case 0 :
+                if (GameObject.FindGameObjectsWithTag("Go").Length == 0)
+                {
+                    
+                    gameObject.tag = "Go";
+                }
+                else
+                {
+                    caseSwitch = Random.Range(0, 5); 
+                }
+
+                break; 
+            case 1:
+                if (GameObject.FindGameObjectsWithTag("Stop").Length == 0)
+                {
+                   
+                    gameObject.tag = "Stop";
+                }
+                else
+                {
+                    caseSwitch = Random.Range(0, 5); 
+                }
+
+                break;
+            case 2:
+                if (GameObject.FindGameObjectsWithTag("Left").Length == 0)
+                {
+                    
+                    gameObject.tag = "Left";
+                }
+                else
+                {
+                    caseSwitch = Random.Range(0, 5); 
+                }
+
+                break;
+            case 3:
+                if (GameObject.FindGameObjectsWithTag("Right").Length == 0)
+                {
+                    
+                    gameObject.tag = "Right";
+                }
+                else
+                {
+                    caseSwitch = Random.Range(0, 5); 
+                }
+
+                break;
+            case 4:
+                if (GameObject.FindGameObjectsWithTag("Horn").Length == 0)
+                {
+                    gameObject.name = gameObject.name + " (Horn)";
+                    gameObject.tag = "Horn";
+                }
+                else
+                {
+                    caseSwitch = Random.Range(0, 5); 
+                }
+
+                break;
+            default:
+                print("Wrong");
+                break;
+        }
+        
         print(playerCount);
         if (playerCount == 2)
         {
