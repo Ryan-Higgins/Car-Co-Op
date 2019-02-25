@@ -1,57 +1,14 @@
 fileFormatVersion: 2
-guid: 2704481b563b0de4fa6a77682a6d0cfe
+guid: 1fc26ec7fcdac2e489ff2183c94e5e06
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Side.000
-    100004: Side.018
-    100006: Side.001
-    100008: DropOutFloor
-    100010: Road
-    100012: WallGlow
-    100014: Walls
-    100016: Camera
-    100018: Lamp
     400000: //RootNode
-    400002: Side.000
-    400004: Side.018
-    400006: Side.001
-    400008: DropOutFloor
-    400010: Road
-    400012: WallGlow
-    400014: Walls
-    400016: Camera
-    400018: Lamp
-    2000000: Camera
-    2100000: Diffuse.002
-    2100002: Holo_Wall.002
-    2100004: Diffuse.000
-    2100006: Holo_Wall.000
-    2100008: Blue_HighWay
-    2100010: Drop_out_Fllor
-    2300000: Side.000
-    2300002: Side.018
-    2300004: Side.001
-    2300006: DropOutFloor
-    2300008: Road
-    2300010: WallGlow
-    2300012: Walls
-    3300000: Side.000
-    3300002: Side.018
-    3300004: Side.001
-    3300006: DropOutFloor
-    3300008: Road
-    3300010: WallGlow
-    3300012: Walls
-    4300000: Side.000
-    4300002: Side.018
-    4300004: Side.001
-    4300006: WallGlow
-    4300008: DropOutFloor
-    4300010: Walls
-    4300012: Road
-    10800000: Lamp
+    2100000: Speed_Up
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Plane
   externalObjects: {}
   materials:
     importMaterials: 1
