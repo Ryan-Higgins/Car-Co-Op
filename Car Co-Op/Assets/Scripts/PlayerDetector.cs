@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class PlayerDetector : MonoBehaviour
 {
     public int playerCount = 0;
+    public GameObject meDisplay;
+     Text text;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class PlayerDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*//(playerCount);
+        print(playerCount);
         if (playerCount == 2)
         {
             if (gameObject.CompareTag("Go"))
@@ -28,20 +31,43 @@ public class PlayerDetector : MonoBehaviour
             {
                 SwitchManager.isStopping = true;
                 SwitchManager.doubleStop = true;
+            } else if (gameObject.CompareTag("Left"))
+            {
+                //SwitchManager.left = true;
+                SwitchManager.doubleLeft = true;
+            }else if (gameObject.CompareTag("Right"))
+            {
+                print("CHECKED");
+                //SwitchManager.right = true;
+                SwitchManager.doubleRight = true;
+            }else if (gameObject.CompareTag("Horn"))
+            {
+                
             }
         } else if (playerCount == 1)
         {
-
+            meDisplay.SetActive(false);
+            text.text = gameObject.tag.ToUpper(); 
             //print("Active");
             if (gameObject.CompareTag("Go"))
             {
-
                 SwitchManager.isGoing = true;
                 SwitchManager.doubleSpeed = false;
             }else if (gameObject.CompareTag("Stop"))
             {
                 SwitchManager.isStopping = true;
                 SwitchManager.doubleStop = false;
+            } else if (gameObject.CompareTag("Left"))
+            {
+                SwitchManager.left = true;
+                SwitchManager.doubleLeft = false;
+            }else if (gameObject.CompareTag("Right"))
+            {
+                SwitchManager.right = true;
+                SwitchManager.doubleRight = false;
+            } else if (gameObject.CompareTag("Horn"))
+            {
+                
             }
         } else if (playerCount == 0)
         {
@@ -54,29 +80,42 @@ public class PlayerDetector : MonoBehaviour
             {
                 SwitchManager.isStopping = false;
                 SwitchManager.doubleStop = false;
+            }else if (gameObject.CompareTag("Left"))
+            {
+                SwitchManager.left = false;
+                SwitchManager.doubleLeft = false;
+            }else if (gameObject.CompareTag("Right"))
+            {
+                SwitchManager.right = false;
+                SwitchManager.doubleRight = false;
+            }else if (gameObject.CompareTag("Horn"))
+            {
+                
             }
-        }*/
-
-        if(playerCount > 0){
-
-
-
-
-
         }
     }
 
-    public GameObject meDisplay;
-    Text text; 
+   
+
+    void OnTriggerEnter2D(Collider2D player)
+    {
+        if (player.CompareTag("Player1") || player.CompareTag("Player2"))
+        {
+            playerCount = playerCount + 1;
+            meDisplay.SetActive(false);
+            text.text = gameObject.tag.ToUpper(); 
+        }
+    }
     
     void OnTriggerStay2D(Collider2D player)
     {
+        print(playerCount);
         
-        if (player.CompareTag("Player1") || player.CompareTag("Player2"))
+/*        if (player.CompareTag("Player1") || player.CompareTag("Player2"))
         {
             //SwitchManager.isGoing = true;
             //print("Active");
-            playerCount++;
+            
             meDisplay.SetActive(false);
             text.text = gameObject.tag.ToUpper(); 
             switch (gameObject.tag)
@@ -85,22 +124,54 @@ public class PlayerDetector : MonoBehaviour
 
 
                 case "Go":
+                    if (playerCount == 2)
+                    {
+                        SwitchManager.doubleSpeed = true;
+                    }
+                    else
+                    {
+                        SwitchManager.doubleSpeed = false;
+                    }
                     //SwitchManager.doubleSpeed = true;
-                    print("Go");
+                    //print("Go");
                     SwitchManager.isGoing = true;
                     break;
 
                 case "Stop":
+                    if (playerCount == 2)
+                    {
+                        SwitchManager.doubleStop = true;
+                    }
+                    else
+                    {
+                        SwitchManager.doubleStop = false;
+                    }
                     print("Stop");
                     SwitchManager.isStopping = true;
                     break;
 
                 case "Left":
+                    if (playerCount == 2)
+                    {
+                        SwitchManager.doubleLeft = true;
+                    }
+                    else
+                    {
+                        SwitchManager.doubleLeft = false;
+                    }
                     print("Left");
                     SwitchManager.left = true;
                     break;
 
                 case "Right":
+                    if (playerCount == 2)
+                    {
+                        SwitchManager.doubleRight = true;
+                    }
+                    else
+                    {
+                        SwitchManager.doubleRight = false;
+                    }
                     print("Right");
                     SwitchManager.right = true;
                     break;
@@ -116,15 +187,18 @@ public class PlayerDetector : MonoBehaviour
 
 
             }
-        }
+        }*/
     }
 
     void OnTriggerExit2D(Collider2D player)
     {
-        if (player.CompareTag("Player1") || player.CompareTag("Player2"))
+        playerCount = playerCount - 1;
+        text.text = ""; 
+        meDisplay.SetActive(true);
+        /*if (player.CompareTag("Player1") || player.CompareTag("Player2"))
         {
             //SwitchManager.isGoing = false;
-            playerCount--;
+            playerCount = playerCount - 1;
             text.text = ""; 
             meDisplay.SetActive(true);
 
@@ -135,6 +209,7 @@ public class PlayerDetector : MonoBehaviour
 
                 case "Go":
                     //SwitchManager.doubleSpeed = true;
+                    
                     print("Go");
                     SwitchManager.isGoing = false;
                     break;
@@ -165,6 +240,6 @@ public class PlayerDetector : MonoBehaviour
 
 
             }
-        }
+        }*/
     }
 }

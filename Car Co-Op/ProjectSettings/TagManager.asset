@@ -10,6 +10,7 @@ TagManager:
   - Stop
   - Left
   - Right
+  - Horn
   layers:
   - Default
   - TransparentFX
