@@ -9,7 +9,9 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Car_Movement.cs" t="Include" />
+          <e p="ControlSwitch.cs" t="Include" />
           <e p="Holo_Road_Effect.cs" t="Include" />
+          <e p="HonkCheck.cs" t="Include" />
           <e p="Move.cs" t="Include" />
           <e p="PlayerDetector.cs" t="Include" />
           <e p="SwitchManager.cs" t="Include" />

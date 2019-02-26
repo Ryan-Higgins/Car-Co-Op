@@ -16,7 +16,7 @@ public class SwitchManager : MonoBehaviour
     public GameObject ship;
     private Rigidbody shipRB;
     public static bool left, right;
-    private bool horn;
+    public static bool horn;
     private int brakingForce = 1;
     public float speed = 20f, maxSpeed = 40f, rotationSpeed = 45f;
     float drageForce = 0.9f; 

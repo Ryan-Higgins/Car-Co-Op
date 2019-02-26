@@ -11,6 +11,7 @@ TagManager:
   - Left
   - Right
   - Horn
+  - Ship
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class PlayerDetector : MonoBehaviour
@@ -11,13 +12,14 @@ public class PlayerDetector : MonoBehaviour
     public GameObject meDisplay;
      Text text;
     private int caseSwitch;
+    public static bool controlsSet;
     
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponentInChildren<Text>();
         text.text = "";
-
+        controlsSet = false;
         caseSwitch = Random.Range(0, 5);
 
         
@@ -26,72 +28,77 @@ public class PlayerDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (caseSwitch)
+        if (controlsSet)
         {
-            case 0 :
-                if (GameObject.FindGameObjectsWithTag("Go").Length == 0)
-                {
-                    
-                    gameObject.tag = "Go";
-                }
-                else
-                {
-                    caseSwitch = Random.Range(0, 5); 
-                }
-
-                break; 
-            case 1:
-                if (GameObject.FindGameObjectsWithTag("Stop").Length == 0)
-                {
-                   
-                    gameObject.tag = "Stop";
-                }
-                else
-                {
-                    caseSwitch = Random.Range(0, 5); 
-                }
-
-                break;
-            case 2:
-                if (GameObject.FindGameObjectsWithTag("Left").Length == 0)
-                {
-                    
-                    gameObject.tag = "Left";
-                }
-                else
-                {
-                    caseSwitch = Random.Range(0, 5); 
-                }
-
-                break;
-            case 3:
-                if (GameObject.FindGameObjectsWithTag("Right").Length == 0)
-                {
-                    
-                    gameObject.tag = "Right";
-                }
-                else
-                {
-                    caseSwitch = Random.Range(0, 5); 
-                }
-
-                break;
-            case 4:
-                if (GameObject.FindGameObjectsWithTag("Horn").Length == 0)
-                {
-                    gameObject.name = gameObject.name + " (Horn)";
-                    gameObject.tag = "Horn";
-                }
-                else
-                {
-                    caseSwitch = Random.Range(0, 5); 
-                }
-
-                break;
-            default:
-                print("Wrong");
-                break;
+            gameObject.tag = "Untagged";
         }
+            switch (caseSwitch)
+            {
+                case 0:
+                    if (GameObject.FindGameObjectsWithTag("Go").Length == 0)
+                    {
+
+                        gameObject.tag = "Go";
+                    }
+                    else
+                    {
+                        caseSwitch = Random.Range(0, 5);
+                    }
+
+                    break;
+                case 1:
+                    if (GameObject.FindGameObjectsWithTag("Stop").Length == 0)
+                    {
+
+                        gameObject.tag = "Stop";
+                    }
+                    else
+                    {
+                        caseSwitch = Random.Range(0, 5);
+                    }
+
+                    break;
+                case 2:
+                    if (GameObject.FindGameObjectsWithTag("Left").Length == 0)
+                    {
+
+                        gameObject.tag = "Left";
+                    }
+                    else
+                    {
+                        caseSwitch = Random.Range(0, 5);
+                    }
+
+                    break;
+                case 3:
+                    if (GameObject.FindGameObjectsWithTag("Right").Length == 0)
+                    {
+
+                        gameObject.tag = "Right";
+                    }
+                    else
+                    {
+                        caseSwitch = Random.Range(0, 5);
+                    }
+
+                    break;
+                case 4:
+                    if (GameObject.FindGameObjectsWithTag("Horn").Length == 0)
+                    {
+                        gameObject.name = gameObject.name + " (Horn)";
+                        gameObject.tag = "Horn";
+                    }
+                    else
+                    {
+                        caseSwitch = Random.Range(0, 5);
+                    }
+
+                    break;
+                default:
+                    print("Wrong");
+                    break;
+            }
+        
         
         print(playerCount);
         if (playerCount == 2)
@@ -140,7 +147,7 @@ public class PlayerDetector : MonoBehaviour
                 SwitchManager.doubleRight = false;
             } else if (gameObject.CompareTag("Horn"))
             {
-                
+                SwitchManager.horn = true;
             }
         } else if (playerCount == 0)
         {
@@ -163,7 +170,7 @@ public class PlayerDetector : MonoBehaviour
                 SwitchManager.doubleRight = false;
             }else if (gameObject.CompareTag("Horn"))
             {
-                
+                SwitchManager.horn = false;
             }
         }
     }
