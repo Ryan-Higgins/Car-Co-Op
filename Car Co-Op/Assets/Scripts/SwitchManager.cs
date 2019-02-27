@@ -35,13 +35,13 @@ public class SwitchManager : MonoBehaviour
     void Update()
     {
         Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
-        print("On Ground: " + onGround);
+        //print("On Ground: " + onGround);
         if (shipRB.velocity.magnitude < maxSpeed)
         {
             shipRB.AddForce(direction * speed);
            // print("Doing");
         }
-        print(doubleRight);
+        //print(doubleRight);
         //print("I am going " + shipRB.velocity.magnitude);
         if (isGoing)
         {

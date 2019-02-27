@@ -100,7 +100,7 @@ public class PlayerDetector : MonoBehaviour
             }
         
         
-        print(playerCount);
+        //print(playerCount);
         if (playerCount == 2)
         {
             if (gameObject.CompareTag("Jump"))
