@@ -35,10 +35,10 @@ public class PlayerDetector : MonoBehaviour
             switch (caseSwitch)
             {
                 case 0:
-                    if (GameObject.FindGameObjectsWithTag("Go").Length == 0)
+                    if (GameObject.FindGameObjectsWithTag("Jump").Length == 0)
                     {
 
-                        gameObject.tag = "Go";
+                        gameObject.tag = "Jump";
                     }
                     else
                     {
@@ -103,10 +103,12 @@ public class PlayerDetector : MonoBehaviour
         print(playerCount);
         if (playerCount == 2)
         {
-            if (gameObject.CompareTag("Go"))
+            if (gameObject.CompareTag("Jump"))
             {
-                SwitchManager.doubleSpeed = true;
-                SwitchManager.isGoing = true;
+                SwitchManager.isJumping = true;
+                SwitchManager.doubleJump = true;
+                /*SwitchManager.doubleSpeed = true;
+                SwitchManager.isGoing = true;*/
             } else if (gameObject.CompareTag("Stop"))
             {
                 SwitchManager.isStopping = true;
@@ -129,10 +131,12 @@ public class PlayerDetector : MonoBehaviour
             meDisplay.SetActive(false);
             text.text = gameObject.tag.ToUpper(); 
             //print("Active");
-            if (gameObject.CompareTag("Go"))
+            if (gameObject.CompareTag("Jump"))
             {
-                SwitchManager.isGoing = true;
-                SwitchManager.doubleSpeed = false;
+                SwitchManager.isJumping = true;
+                SwitchManager.doubleJump = false;
+                /*SwitchManager.isGoing = true;
+                SwitchManager.doubleSpeed = false;*/
             }else if (gameObject.CompareTag("Stop"))
             {
                 SwitchManager.isStopping = true;
@@ -152,10 +156,12 @@ public class PlayerDetector : MonoBehaviour
         } else if (playerCount == 0)
         {
             //print("not Active");
-            if (gameObject.CompareTag("Go"))
+            if (gameObject.CompareTag("Jump"))
             {
-                SwitchManager.isGoing = false;
-                SwitchManager.doubleSpeed = false;
+                SwitchManager.isJumping = false;
+                SwitchManager.doubleJump = false;
+                /*SwitchManager.isGoing = false;
+                SwitchManager.doubleSpeed = false;*/
             } else if (gameObject.CompareTag("Stop"))
             {
                 SwitchManager.isStopping = false;

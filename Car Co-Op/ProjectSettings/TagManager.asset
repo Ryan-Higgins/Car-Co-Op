@@ -12,6 +12,7 @@ TagManager:
   - Right
   - Horn
   - Ship
+  - Jump
   layers:
   - Default
   - TransparentFX

@@ -6,12 +6,16 @@ public class SwitchManager : MonoBehaviour
 {
     public static bool isGoing;
     public static bool isStopping;
+    public static bool isJumping;
 
     public static bool doubleSpeed;
     public static bool doubleStop;
     public static bool doubleLeft;
     public static bool doubleRight;
     public static bool doubleHorn;
+    public static bool doubleJump;
+
+    public static bool onGround;
 
     public GameObject ship;
     private Rigidbody shipRB;
@@ -19,7 +23,7 @@ public class SwitchManager : MonoBehaviour
     public static bool horn;
     private int brakingForce = 1;
     public float speed = 20f, maxSpeed = 40f, rotationSpeed = 45f;
-    float drageForce = 0.9f; 
+    float dragForce = 0.9f; 
     
     // Start is called before the first frame update
     void Start()
@@ -30,18 +34,34 @@ public class SwitchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
+        print("On Ground: " + onGround);
+        if (shipRB.velocity.magnitude < maxSpeed)
+        {
+            shipRB.AddForce(direction * speed);
+           // print("Doing");
+        }
         print(doubleRight);
         //print("I am going " + shipRB.velocity.magnitude);
         if (isGoing)
         {
             // print("I'm driving");
             //ship.transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
+            /*Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
 
             if (shipRB.velocity.magnitude < maxSpeed)
             {
                 shipRB.AddForce(direction * speed);
                 print("Doing");
+            }*/
+        }
+
+        if (isJumping)
+        {
+            print("JUMPING");
+            if (onGround)
+            {
+                shipRB.AddForce(Vector3.up * 30);
             }
         }
         else
