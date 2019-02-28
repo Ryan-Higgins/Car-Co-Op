@@ -15,7 +15,7 @@ public class GroundCheck : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit,1f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit,0.6f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red);
             print("Jump");

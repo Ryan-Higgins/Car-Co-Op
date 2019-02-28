@@ -21,14 +21,19 @@ public class SwitchManager : MonoBehaviour
     private Rigidbody shipRB;
     public static bool left, right;
     public static bool horn;
-    private int brakingForce = 1;
-    public float speed = 20f, maxSpeed = 40f, rotationSpeed = 45f;
+    private int brakingForce = 4;
+    public float speed = 15f, maxSpeed = 30f, rotationSpeed = 45f;
+    private float startSpeed, startRot;
+    private int startBreak;
     float dragForce = 0.9f; 
     
     // Start is called before the first frame update
     void Start()
     {
         shipRB = ship.GetComponent<Rigidbody>();
+        startSpeed = speed;
+        startBreak = brakingForce;
+        startRot = rotationSpeed;
     }
 
     // Update is called once per frame
@@ -61,8 +66,9 @@ public class SwitchManager : MonoBehaviour
             print("JUMPING");
             if (onGround)
             {
-                shipRB.AddForce(Vector3.up * 30);
+                shipRB.AddForce(Vector3.up * 100);
             }
+                
         }
         else
         {
@@ -84,7 +90,7 @@ public class SwitchManager : MonoBehaviour
         if (doubleSpeed)
         {
             print("SO FAST");
-            speed = 30;
+            speed = speed * 2;
             /*Vector3 direction = ship.transform.TransformDirection(Vector3.forward);
             if (shipRB.velocity.magnitude < maxSpeed)
             {
@@ -93,15 +99,15 @@ public class SwitchManager : MonoBehaviour
         }
         else if (!doubleSpeed)
         {
-            speed = 20;
+            speed = startSpeed;
         }
         if (doubleStop)
         {
             //print("SO SLOW");
-            brakingForce = 3;
+            brakingForce = brakingForce * 2;
         }else if (!doubleStop)
         {
-            brakingForce = 1;
+            brakingForce = startBreak;
         }
         if (doubleLeft)
         {
@@ -116,7 +122,7 @@ public class SwitchManager : MonoBehaviour
 
         if (!doubleRight && !doubleLeft)
         {
-            rotationSpeed = 45f;
+            rotationSpeed = startRot;
         }
     if (left)
         {
