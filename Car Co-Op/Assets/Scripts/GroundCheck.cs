@@ -18,7 +18,7 @@ public class GroundCheck : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit,0.6f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red);
-            print("Jump");
+            //print("Jump");
             SwitchManager.onGround = true;
         } else
         {

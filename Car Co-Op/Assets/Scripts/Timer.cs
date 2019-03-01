@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour
             timer.text = time.Elapsed.ToString("mm\\:ss\\.ff");   
         }
 
-        if (lapCount >= 3)
+        if (lapCount >= 2)
         {
             print("Race Finished");
             startTime = false;
@@ -43,7 +43,7 @@ public class Timer : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKey(KeyCode.Return) && lapCount >= 2)
         {
             SceneManager.LoadScene("Main");
             Time.timeScale = 1;
@@ -56,7 +56,7 @@ public class Timer : MonoBehaviour
         if (ship.CompareTag("Ship"))
         {
             lapCount++;
-            laps.text = "Lap: " + lapCount + "/3";
+           // laps.text = "Lap: " + lapCount + "/1";
             startTime = true;
         }
     }

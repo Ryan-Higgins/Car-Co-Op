@@ -48,7 +48,7 @@ public class SwitchManager : MonoBehaviour
         }
         //print(doubleRight);
         //print("I am going " + shipRB.velocity.magnitude);
-        if (isGoing)
+        /*if (isGoing)
         {
             // print("I'm driving");
             //ship.transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -58,8 +58,8 @@ public class SwitchManager : MonoBehaviour
             {
                 shipRB.AddForce(direction * speed);
                 print("Doing");
-            }*/
-        }
+            }#1#
+        }*/
 
         if (isJumping)
         {

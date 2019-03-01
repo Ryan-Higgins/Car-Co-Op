@@ -21,7 +21,7 @@ public class Ship_Behaviour : MonoBehaviour
 
         //Debug.Log(Time.deltaTime);
         float vol = GetComponent<Rigidbody>().velocity.magnitude;
-        Debug.Log(vol);
+        //Debug.Log(vol);
         if(vol >= boosterLimit){
             anim.SetBool("Boost", true);
             boost = true; 
@@ -46,7 +46,7 @@ public class Ship_Behaviour : MonoBehaviour
         
         if(other.gameObject.tag != "Ground"){
 
-            cam.GetComponent<ScreenShake>().ShakeScreen(); ;
+            //cam.GetComponent<ScreenShake>().ShakeScreen(); ;
         } 
         
     }

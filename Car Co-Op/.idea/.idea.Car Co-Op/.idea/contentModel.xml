@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\rhino\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\rhino\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Car Co-Op.-1450746106.00" t="ExcludeRecursive" />
-    <e p="G:\Repositories\Car-Co-Op\Car Co-Op" t="IncludeRecursive">
+    <e p="C:\Users\Admin\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Admin\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Admin\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Car Co-Op.1729154781.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Admin\Documents\Repositeries\Car-Co-Op\Car Co-Op" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Music.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Button.cs" t="Include" />
           <e p="Car_Movement.cs" t="Include" />
@@ -19,6 +21,7 @@
           <e p="ScreenShake.cs" t="Include" />
           <e p="Ship.cs" t="Include" />
           <e p="Ship_Behaviour.cs" t="Include" />
+          <e p="Spark.cs" t="Include" />
           <e p="SwitchManager.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
         </e>
